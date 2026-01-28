@@ -33,7 +33,7 @@ while (!gameOver)
   //update array 
   board[choice] = currentPlayer;
   
-  //check for winner
+  //check for winner.
   int result = st.Winner(board);
   
   //0 = no win, 1 = win, 2 = draw
