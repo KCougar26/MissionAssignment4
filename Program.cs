@@ -1,6 +1,5 @@
 ﻿//Drivers
 //Chad Laursen and Kathryn Erickson
-
 //Welcome the user to the game
 //Create a game board array to store the players’ choices
 //Ask each player in turn for their choice and update the game board array
@@ -9,6 +8,9 @@
 //when a win has occurred and which player won the game
 
 //Welcome
+
+using MissionAssignment4;
+
 Console.WriteLine("Hello, Welcome to a game of Tic-Tac-Toe!");
 
 //Create array

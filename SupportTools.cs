@@ -4,9 +4,9 @@ using System.Text;
 
 namespace MissionAssignment4
 {
-    internal class SupportTools
+    public class SupportTools
     {
-        public string CheckBoard(string[] board)
+        public string Winner(string[] board)
         {
             // Check rows, columns, and diagonals for a win
             string[,] winConditions = new string[,]
@@ -27,7 +27,41 @@ namespace MissionAssignment4
                     return winConditions[i, 0]; // Return the winner ("X" or "O")
                 }
             }
+
             return null; // No winner yet
+        }
+
+        public string PrintBoard(string[,] board)
+        {
+            string boardDisplay = "";
+
+            //Loops through each row and adds a space 
+            for (int row = 0; row < 3; row++)
+            {
+                boardDisplay += " ";
+
+                //Loops through the columns and prints the value thats there
+                for (int col = 0; col < 3; col++)
+                {
+                    boardDisplay += board[row, col];
+
+                    if (col < 2)
+                    {
+                        boardDisplay += " | ";
+                    }
+                }
+
+                //Creates a new line
+                boardDisplay += "\n";
+
+                //Adds dividers in between the rows but not the last one
+                if (row < 2)
+                {
+                    boardDisplay += "---+---+---\n";
+                }
+            }
+
+            return boardDisplay;
         }
     }
 }
