@@ -30,38 +30,35 @@ namespace MissionAssignment4
 
             return null; // No winner yet
         }
-
-        public string PrintBoard(string[,] board)
+        
+        public void PrintBoard(string[] board)
         {
-            string boardDisplay = "";
+            Console.WriteLine();
 
-            //Loops through each row and adds a space 
             for (int row = 0; row < 3; row++)
             {
-                boardDisplay += " ";
+                Console.Write(" ");
 
-                //Loops through the columns and prints the value thats there
                 for (int col = 0; col < 3; col++)
                 {
-                    boardDisplay += board[row, col];
+                    int index = row * 3 + col;
+                    Console.Write(board[index]);
 
                     if (col < 2)
                     {
-                        boardDisplay += " | ";
+                        Console.Write(" | ");
                     }
                 }
 
-                //Creates a new line
-                boardDisplay += "\n";
+                Console.WriteLine();
 
-                //Adds dividers in between the rows but not the last one
                 if (row < 2)
                 {
-                    boardDisplay += "---+---+---\n";
+                    Console.WriteLine("---+---+---");
                 }
             }
 
-            return boardDisplay;
+            Console.WriteLine();
         }
     }
 }
