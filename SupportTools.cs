@@ -1,36 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// Carson Oliver and George Martinez
+
+using System;
 
 namespace MissionAssignment4
 {
     public class SupportTools
     {
-        public string Winner(string[] board)
+        // Returns:
+        // 0 = no winner yet (game continues)
+        // 1 = someone has won
+        // 2 = draw (board full, no winner)
+        public int Winner(string[] board)
         {
-            // Check rows, columns, and diagonals for a win
-            string[,] winConditions = new string[,]
+            // Winning combinations by index
+            int[,] winCombos = new int[,]
             {
-                { board[0], board[1], board[2] },
-                { board[3], board[4], board[5] },
-                { board[6], board[7], board[8] },
-                { board[0], board[3], board[6] },
-                { board[1], board[4], board[7] },
-                { board[2], board[5], board[8] },
-                { board[0], board[4], board[8] },
-                { board[2], board[4], board[6] }
+                { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, // rows
+                { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, // columns
+                { 0, 4, 8 }, { 2, 4, 6 }               // diagonals
             };
-            for (int i = 0; i < winConditions.GetLength(0); i++)
+
+            for (int i = 0; i < winCombos.GetLength(0); i++)
             {
-                if (winConditions[i, 0] == winConditions[i, 1] && winConditions[i, 1] == winConditions[i, 2])
+                int a = winCombos[i, 0];
+                int b = winCombos[i, 1];
+                int c = winCombos[i, 2];
+
+                string mark = board[a];
+
+                // Only count a win if the line is X or O (not the initial numbers)
+                if ((mark == "X" || mark == "O") &&
+                    mark == board[b] &&
+                    mark == board[c])
                 {
-                    return winConditions[i, 0]; // Return the winner ("X" or "O")
+                    return 1;
                 }
             }
 
-            return null; // No winner yet
+            // If there is no winner and the board is full -> draw
+            bool boardFull = true;
+            for (int i = 0; i < board.Length; i++)
+            {
+                if (board[i] != "X" && board[i] != "O")
+                {
+                    boardFull = false;
+                    break;
+                }
+            }
+
+            return boardFull ? 2 : 0;
         }
-        
+
         public void PrintBoard(string[] board)
         {
             Console.WriteLine();
