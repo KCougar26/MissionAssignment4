@@ -3,4 +3,4 @@
 
 This is our groups submission for Assignment 4. This is a basic tic-tac-toe game that is played between to players on the same computer!
 
-Download this repo from the main branch.
+Clone this repo from the main branch.
